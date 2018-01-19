@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,16 +8,14 @@
     <meta name="description" content="Anonymous">
     <meta name="author" content="">
     <link rel="icon" href="{{ url_for('static', filename='img/anonymus-logo_62x62.jpg') }}">
-
-    <title>Анонграф - анонимные заметки</title>
+    <title>{{ article.name }}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/my.css') }}">
-  </head>
-
-  <body>
-    <div class="container-fluid" style="background-color: black; height: 50px">
+</head>
+<body>
+    <div class="container-fluid" style="background-color: black; height: 50px; width: 100%; position: fixed; z-index: 3">
         <div class="navbar-brand" style="padding-top: 0">
             <img src="{{ url_for('static', filename='img/anonymus-logo.jpg') }}" style="height: inherit">
         </div>
@@ -25,29 +23,34 @@
             <h3>Анонграф</h3>
         </div>
     </div>
-    <div class="container col-md-8 col-md-offset-2">
-        <div class="jumbotron">
-            <div class="text-center" style="margin-bottom: 50px">
-                <h4>Поделитесь вашими мыслями анонимно!</h4>
-            </div>
-            <form method="POST">
-                <div class="form-group">
-                  <input name="name" class="form-control" placeholder="Заголовок" value="{{ title }}" autofocus/>
-                </div>
-                <div class="form-group">
-                  <input name="signature" class="form-control" value="{{ signature }}" placeholder="Подпись"/>
-                </div>
-                <div class="form-group">
-                  <textarea name="text" class="form-control" rows="10" placeholder="Ваша история">{{ text }}</textarea>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary" type="submit">Опубликовать</button>
-                </div>
-            </form>
-        </div>
-    </div><!-- /.container -->
 
+    <div class="container" style="position: relative">
+        <div class="right_menu">
+            <a href="/">
+                <span class="glyphicon glyphicon-plus" style="margin-top: 20px;"></span>
+            </a>
+            <br/>
+            {% if is_author %}
+                <a href="change/">
+                    <span class="glyphicon glyphicon-pencil" style="margin-top: 20px;"></span>
+                </a>
+                <br/>
+                <a href="delete/" onclick="return confirm('Действительно хотите удалить статью? Это действие необратимо.')">
+                    <span class="glyphicon glyphicon-trash" style="margin-top: 20px;"></span>
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="jumbotron">
+                <div class="text-center">
+                    <h3>{{ article.name }}</h3>
+                </div>
+                <div style="margin-top: 40px; margin-bottom: 30px; white-space: pre-wrap">{{ article.text }}</div>
+                <div class="text-right">{{ article.signature }}</div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

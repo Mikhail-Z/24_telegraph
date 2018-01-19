@@ -1,0 +1,10 @@
+.glyphicon {
+    font-size: 25px;
+}
+
+.right_menu {
+  z-index: 2;
+  right: 50px;
+  top: 60px;
+  position: fixed;
+}
