@@ -1,1 +1,1 @@
-web: gunicorn anongram.wsgi
+web: gunicorn server:app --log-file=-
