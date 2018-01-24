@@ -1,3 +1,30 @@
+{%extends "_base.html"%}
+{% block content %}
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="jumbotron">
+            <div class="text-center" style="margin-bottom: 50px">
+                <h4>Поделитесь вашими мыслями анонимно!</h4>
+            </div>
+            <form method="POST">
+                <div class="form-group">
+                  <input name="name" class="form-control" placeholder="Заголовок" value="{{ title }}" autofocus/>
+                </div>
+                <div class="form-group">
+                  <input name="signature" class="form-control" value="{{ signature }}" placeholder="Подпись"/>
+                </div>
+                <div class="form-group">
+                  <textarea name="text" class="form-control" rows="10" placeholder="Ваша история">{{ text }}</textarea>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Опубликовать</button>
+                </div>
+            </form>
+        </div>
+    </div><!-- /.container -->
+{% endblock %}
+
+
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
