@@ -1,3 +1,5 @@
+import os
+
 DEBUG = True
-SQLALCHEMY_DATABASE_URI ='sqlite:///anongraph.db'
+SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 SECRET_KEY = 'thisissecretkey'
