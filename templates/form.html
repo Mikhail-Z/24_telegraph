@@ -7,13 +7,13 @@
             </div>
             <form method="POST">
                 <div class="form-group">
-                  <input name="name" class="form-control" placeholder="Заголовок" value="{{ title }}" autofocus/>
+                  <input name="name" class="form-control" autocomplete="off" placeholder="Заголовок" value="{{ title }}" autofocus/>
                 </div>
                 <div class="form-group">
-                  <input name="signature" class="form-control" value="{{ signature }}" placeholder="Подпись"/>
+                  <input name="signature" class="form-control" autocomplete="off" value="{{ signature }}" placeholder="Подпись"/>
                 </div>
                 <div class="form-group">
-                  <textarea name="text" class="form-control" rows="10" placeholder="Ваша история">{{ text }}</textarea>
+                  <textarea name="text" class="form-control" autocomplete="off" rows="10" placeholder="Ваша история">{{ text }}</textarea>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary" type="submit">Опубликовать</button>
