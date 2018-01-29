@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, make_response, redirect, url_for, abort
+from flask import Flask, render_template, request, make_response, redirect,\
+    url_for, abort, send_from_directory
 from sqlalchemy.orm.exc import NoResultFound
 from models import db, Article
 import uuid
@@ -56,6 +57,12 @@ def create_response_with_cookie(public_id, new_article, cookie_duration_in_days=
         expires=datetime.datetime.now() + datetime.timedelta(cookie_duration_in_days)
     )
     return resp
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/', methods=['GET', 'POST'])

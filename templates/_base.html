@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Anonymous">
     <meta name="author" content="">
-    <link rel="icon" href="{{ url_for('static', filename='img/anonymus-logo_62x62.jpg') }}">
+    <link rel="icon" href="/static/favicon.ico">
 
     <title>Анонграф - анонимные заметки</title>
 
@@ -28,6 +28,8 @@
     </div>
     {% block content %}
     {% endblock %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
