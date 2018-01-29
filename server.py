@@ -35,7 +35,6 @@ def delete_from_db(row):
 
 
 def get_article_info_from_input(input_data):
-    print(input_data)
     title = input_data['title'][0]
     text = input_data['text'][0]
     signature = input_data['signature'][0]
