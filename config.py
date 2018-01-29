@@ -3,11 +3,13 @@ import psycopg2
 
 DEBUG = True
 
-# для production
-SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
-
-# для local
-# SQLALCHEMY_DATABASE_URI = 'sqlite:///anongraph.db'
-
 
 SECRET_KEY = 'thisissecretkey'
+
+FOR_LOCAL_USE = True
+
+
+if FOR_LOCAL_USE:
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///anongraph.db'
+else:
+    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
