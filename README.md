@@ -22,12 +22,9 @@ https://vast-cove-45402.herokuapp.com/
 ```
 $ pip install -r requirements.txt
 ```
-Далее нужно создать базу данных. В корневой папке проекта:
-```
-$ python3
->>> from server import db
->>> db.create_all() 
-```
+Для локального развертывания нужно, чтобы `FOR_LOCAL_USE` в файле `config.py` был `True`.
+Тогда при первом запуске в корневой парке появится БД sqlite `anongraph.db`.
+
 
 # Project Goals
 
