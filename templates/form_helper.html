@@ -1,0 +1,17 @@
+{% macro render_title_field(field) %}
+<div class="form-group">
+    {{ field(class="form-control", autocomplete="off", placeholder="Заголовок", autofocus=True) | safe }}
+</div>
+{% endmacro %}
+
+{% macro render_signature_field(field) %}
+<div class="form-group">
+    {{ field(class="form-control", autocomplete="off", placeholder="Подпись") | safe }}
+</div>
+{% endmacro %}
+
+{% macro render_text_field(field) %}
+<div class="form-group">
+    {{ field(class="form-control", autocomplete="off", placeholder="Ваша история", rows=10) | safe }}
+</div>
+{% endmacro %}

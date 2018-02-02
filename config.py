@@ -6,7 +6,7 @@ DEBUG = True
 
 SECRET_KEY = 'thisissecretkey'
 
-FOR_LOCAL_USE = True
+FOR_LOCAL_USE = False
 
 
 if FOR_LOCAL_USE:

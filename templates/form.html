@@ -1,4 +1,5 @@
-{%extends "_base.html"%}
+{% extends "_base.html" %}
+{% from "form_helper.html" import render_title_field, render_signature_field, render_text_field %}
 {% block content %}
     <div class="container col-md-8 col-md-offset-2">
         <div class="jumbotron">
@@ -6,15 +7,10 @@
                 <h4>Поделитесь вашими мыслями анонимно!</h4>
             </div>
             <form method="POST">
-                <div class="form-group">
-                  <input name="title" class="form-control" autocomplete="off" placeholder="Заголовок" value="{{ title }}" autofocus/>
-                </div>
-                <div class="form-group">
-                  <input name="signature" class="form-control" autocomplete="off" value="{{ signature }}" placeholder="Подпись"/>
-                </div>
-                <div class="form-group">
-                  <textarea name="text" class="form-control" autocomplete="off" rows="10" placeholder="Ваша история">{{ text }}</textarea>
-                </div>
+                {{ form.csrf_token }}
+                {{ render_title_field(form.title) }}
+                {{ render_signature_field(form.signature) }}
+                {{ render_text_field(form.text) }}
                 <div class="form-group">
                   <button class="btn btn-primary" type="submit">Опубликовать</button>
                 </div>
