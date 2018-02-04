@@ -4,7 +4,7 @@ import psycopg2
 
 SECRET_KEY = 'thisissecretkey'
 
-FOR_LOCAL_USE = False
+FOR_LOCAL_USE = True
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 sqlite_prefix = 'sqlite:///'

@@ -144,11 +144,9 @@ def delete_article(public_id):
 
 @app.errorhandler(code_or_exception=404)
 def page_not_found(exception):
-    status_code = 404
-    return render_template('404.html'), status_code
+    return render_template('404.html')
 
 
 @app.errorhandler(code_or_exception=403)
 def forbidden(exception):
-    status_code = 403
-    return render_template('403.html'), status_code
+    return render_template('403.html')
