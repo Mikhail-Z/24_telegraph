@@ -1,13 +1,14 @@
-from flask import render_template, request, make_response, redirect,\
-    url_for, abort, send_from_directory
-from sqlalchemy.orm.exc import NoResultFound
-from models import db, Article
-import uuid
 import datetime
-import jwt
 import os
-from forms import ArticleForm
-from server import app
+import uuid
+import jwt
+from flask import render_template, request, make_response, redirect, \
+    url_for, abort, send_from_directory
+from .forms import ArticleForm
+from sqlalchemy.orm.exc import NoResultFound
+
+from . import app
+from .models import db, Article
 
 
 def create_public_id():
@@ -148,6 +149,6 @@ def page_not_found(exception):
 
 
 @app.errorhandler(code_or_exception=403)
-def page_not_found(exception):
+def forbidden(exception):
     status_code = 403
     return render_template('403.html'), status_code
