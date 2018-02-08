@@ -20,12 +20,16 @@ $ pip install -r requirements.txt
 Далее нужно создать базу данных. В корневой папке проекта:
 ```
 $ python3
->>> from server import db
+>>> from telegraph.models import db
 >>> db.create_all() 
 ```
 Если существует переменная окружения, отвечающая за БД,
  то новая таблица появится именно в этой базе данных, иначе создастся база данных sqlite в
  корневой папке проекта с этой таблицей.
+ 
+После этого в файле `config.py` вместо пустой строки присвойте переменной `SECRET_KEY` какое-то другое значение.
+
+Всё готово!
 # Project Goals
 
 The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)

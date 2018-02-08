@@ -2,7 +2,7 @@ import os
 import psycopg2
 
 
-SECRET_KEY = 'thisissecretkey'
+SECRET_KEY = ''
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
