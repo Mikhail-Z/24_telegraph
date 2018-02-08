@@ -2,18 +2,22 @@
 {% block content %}
     <div class="container" style="position: relative">
         <div class="right_menu">
-            <a href="/">
-                <span class="glyphicon glyphicon-plus" style="margin-top: 20px;"></span>
-            </a>
-            <br/>
+            <p>
+                <a href="/">
+                    <span class="glyphicon glyphicon-plus" style="margin-top: 20px;"></span>
+                </a>
+            </p>
             {% if is_author %}
-                <a href="change/">
-                    <span class="glyphicon glyphicon-pencil" style="margin-top: 20px;"></span>
-                </a>
-                <br/>
-                <a href="delete/" onclick="return confirm('Действительно хотите удалить статью? Это действие необратимо.')">
-                    <span class="glyphicon glyphicon-trash" style="margin-top: 20px;"></span>
-                </a>
+                <p>
+                    <a href="change/">
+                        <span class="glyphicon glyphicon-pencil" style="margin-top: 20px;"></span>
+                    </a>
+                </p>
+                <p>
+                    <a href="delete/" onclick="return confirm('Действительно хотите удалить статью? Это действие необратимо.')">
+                        <span class="glyphicon glyphicon-trash" style="margin-top: 20px;"></span>
+                    </a>
+                </p>
             {% endif %}
         </div>
         <div class="col-md-8 col-md-offset-2">
