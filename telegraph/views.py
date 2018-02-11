@@ -1,5 +1,5 @@
 import os
-from .views_help_functions import *
+import telegraph.views_help_functions as help_functions
 
 from flask import render_template, request, redirect, \
     url_for, abort, send_from_directory
@@ -22,16 +22,16 @@ def create_article():
         return render_template('form.html', form=form)
     else:
         input_data = dict(request.form)
-        public_id = create_public_id()
-        title, text, signature = get_article_info_from_input(input_data)
+        public_id = help_functions.create_public_id()
+        title, text, signature = help_functions.get_article_info_from_input(input_data)
         new_article = Article(
             public_id=public_id,
             title=title,
             signature=signature,
             text=text
         )
-        insert2db(new_article)
-        return create_response_with_cookie(public_id, new_article)
+        help_functions.insert2db(new_article)
+        return help_functions.create_response_with_cookie(public_id, new_article)
 
 
 @app.route('/<public_id>/',)
@@ -42,37 +42,37 @@ def watch_article(public_id):
     return render_template(
         'article.html',
         article=article,
-        is_author=is_user_this_article_author(public_id)
+        is_author=help_functions.is_user_this_article_author(public_id)
     )
 
 
 @app.route('/<public_id>/change/', methods=['GET', 'POST'])
-@token_required
+@help_functions.token_required
 def change_article(public_id):
     form = ArticleForm()
     article = Article.query.filter_by(public_id=public_id).first()
     if article is None:
         return abort(404)
     if request.method == 'GET':
-        form.title.data, form.text.data, form.signature.data = get_article_info_from_db(article)
+        form.title.data, form.text.data, form.signature.data = help_functions.get_article_info_from_db(article)
         return render_template('form.html', form=form)
     else:
         article = Article.query.filter_by(public_id=public_id).first()
         input_data = dict(request.form)
-        article.title, article.text, article.signature = get_article_info_from_input(input_data)
+        article.title, article.text, article.signature = help_functions.get_article_info_from_input(input_data)
         db.session.commit()
         return redirect(url_for('watch_article', public_id=public_id))
 
 
 @app.route('/<public_id>/delete/')
-@token_required
+@help_functions.token_required
 def delete_article(public_id):
     article = Article.query.filter_by(public_id=public_id).first()
     if article is None:
-        status_code = 404
-        return abort(status_code)
+        not_found_status_code = 404
+        return abort(not_found_status_code)
 
-    delete_from_db(article)
+    help_functions.delete_from_db(article)
     return redirect(url_for('watch_article', public_id=public_id))
 
 

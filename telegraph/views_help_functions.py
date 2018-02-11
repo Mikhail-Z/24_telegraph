@@ -70,7 +70,8 @@ def token_required(fn):
         public_id = kwargs['public_id']
         print(public_id)
         if not is_user_this_article_author(public_id):
-            return abort(403)
+            forbidden_status_code = 403
+            return abort(forbidden_status_code)
         else:
             return fn(public_id)
     return decorated
