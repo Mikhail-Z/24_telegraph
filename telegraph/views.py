@@ -38,7 +38,8 @@ def create_article():
 def watch_article(public_id):
     article = Article.query.filter_by(public_id=public_id).first()
     if article is None:
-        return abort(404)
+        not_found_status_code = 404
+        return abort(not_found_status_code)
     return render_template(
         'article.html',
         article=article,
@@ -52,7 +53,8 @@ def change_article(public_id):
     form = ArticleForm()
     article = Article.query.filter_by(public_id=public_id).first()
     if article is None:
-        return abort(404)
+        not_found_status_code = 404
+        return abort(not_found_status_code)
     if request.method == 'GET':
         form.title.data, form.text.data, form.signature.data = help_functions.get_article_info_from_db(article)
         return render_template('form.html', form=form)
