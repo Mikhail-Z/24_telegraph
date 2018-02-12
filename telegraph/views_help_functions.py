@@ -22,7 +22,6 @@ def delete_from_db(row):
 
 
 def get_article_info_from_input(input_data):
-    print(input_data)
     title = input_data['title'][0]
     text = input_data['text'][0]
     signature = input_data['signature'][0]
@@ -68,7 +67,6 @@ def token_required(fn):
     @wraps(fn)
     def decorated(*args, **kwargs):
         public_id = kwargs['public_id']
-        print(public_id)
         if not is_user_this_article_author(public_id):
             forbidden_status_code = 403
             return abort(forbidden_status_code)
